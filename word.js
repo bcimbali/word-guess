@@ -25,7 +25,13 @@ var Word = function(word) {
         for (var i = 0; i < this.wordArray.length; i++) {
             this.wordArray[i].checkLetter(guess);
         }
-    }
+    },
+    this.checkWin = function() {
+		for (var i=0; i < this.wordArray.length; i++) {
+			if (this.wordArray[i] === '_') return false;
+		}
+		return true;
+	}
 }
 
 // var wordTest = new Word('arkansas');

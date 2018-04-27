@@ -19,17 +19,23 @@ var askQuestion = function() {
                 message: 'Guess a letter'
             }
         ]).then(function(answers) {
-            if (GameWord.word.includes(answers.guess)) {
-                console.log('you guessed correctly!');
+            var sanitizeGuess = answers.guess.toLowerCase();
+            if (GameWord.word.includes(sanitizeGuess)) {
+                // console.log('you guessed correctly!');
             }
-            if (!GameWord.word.includes(answers.guess)) {
+            if (!GameWord.word.includes(sanitizeGuess)) {
                 console.log('Incorrect! \nGuess Again');
                 guessesLeft--;
             }
             
-            GameWord.checkWord(answers.guess);
+            GameWord.checkWord(sanitizeGuess);
             GameWord.displayWord();
             console.log('Guesses Remaining: ' + guessesLeft);
+
+            // if (GameWord.wordArray.indexOf('_') === -1) {
+            //     console.log('Nice Job!');
+            //     console.log('word array: ' + GameWord.wordArray);
+            // }
 
             askQuestion();
         });
