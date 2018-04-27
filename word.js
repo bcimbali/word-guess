@@ -34,3 +34,5 @@ var Word = function(word) {
 // wordTest.checkWord('a');
 // wordTest.displayWord();
 // console.log(wordTest);
+
+module.exports = Word;

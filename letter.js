@@ -1,5 +1,3 @@
-
-
 var Letter = function(alpha) {
     this.letter = alpha;
     this.letterGuessed = false
