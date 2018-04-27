@@ -14,17 +14,23 @@ var Word = function(word) {
     },
     this.displayWord = function() {
         var tempArray = [];
-        this.wordArray[1].checkLetter('r');
+        // this.wordArray[1].checkLetter('r');
         for (var i = 0; i < this.wordArray.length; i++) {
             tempArray.push(this.wordArray[i].displayLetter());
         }
         var tempArrayString = tempArray.join(' ');
         console.log(tempArrayString);
+    },
+    this.checkWord = function(guess) {
+        for (var i = 0; i < this.wordArray.length; i++) {
+            this.wordArray[i].checkLetter(guess);
+        }
     }
 }
 
-var wordTest = new Word('arkansas');
+// var wordTest = new Word('arkansas');
 // wordTest.createArray();
-wordTest.addLetter();
-wordTest.displayWord();
+// wordTest.addLetter();
+// wordTest.checkWord('a');
+// wordTest.displayWord();
 // console.log(wordTest);
