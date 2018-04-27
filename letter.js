@@ -18,7 +18,6 @@ var Letter = function(alpha) {
     }
 }; 
 
-
 // var testLetter = new Letter('s');
 // console.log(testLetter.displayLetter());
 
