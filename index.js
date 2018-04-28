@@ -3,11 +3,64 @@ var inquirer = require("inquirer");
 
 var guessesLeft = 5;
 
-var GameWord = new Word('illinois');
+var states = ['alabama', 
+                'alaska', 
+                'arizona', 
+                'arkansas', 
+                'california', 
+                'colorado',
+                'connecticut', 
+                'delaware', 
+                'florida', 
+                'georgia', 
+                'hawaii', 
+                'idaho', 
+                'illinois',
+                'indiana', 
+                'iowa', 
+                'kansas', 
+                'kentucky', 
+                'louisiana', 
+                'maine', 
+                'maryland',
+                'massachusetts', 
+                'michigan', 
+                'minnesota', 
+                'mississippi', 
+                'missouri', 
+                'montana',
+                'nebraska', 
+                'nevada', 
+                'new-hampshire', 
+                'new-jersey', 
+                'new-mexico', 
+                'new-york',
+                'north-carolina', 
+                'north-dakota', 
+                'ohio', 
+                'oklahoma', 
+                'oregon', 
+                'pennsylvania', 
+                'rhode-island',
+                'south-carolina', 
+                'south-dakota', 
+                'tennessee', 
+                'texas', 
+                'utah', 
+                'vermont', 
+                'virginia', 
+                'washington', 
+                'west-virginia',
+                'wisconsin', 
+                'wyoming',
+                'district-of-columbia'];
 
-// var firstGuess = process.argv[2];
+var randomNumber = Math.floor((Math.random() * states.length));
 
-// console.log(GameWord);
+var chosenState = states[randomNumber];
+
+var GameWord = new Word(chosenState);
+
 GameWord.addLetter();
 
 var askQuestion = function() {
@@ -21,10 +74,10 @@ var askQuestion = function() {
         ]).then(function(answers) {
             var sanitizeGuess = answers.guess.toLowerCase();
             if (GameWord.word.includes(sanitizeGuess)) {
-                // console.log('you guessed correctly!');
+                console.log('CORRECT!!!!!');
             }
             if (!GameWord.word.includes(sanitizeGuess)) {
-                console.log('Incorrect! \nGuess Again');
+                console.log('INCORRECT!!!!');
                 guessesLeft--;
             }
             
@@ -46,8 +99,6 @@ var askQuestion = function() {
         console.log('YOU WIN!\nNICE JOB!');
     }
 }
-
-// GameWord.checkWord(firstGuess);
 
 GameWord.displayWord();
 console.log('Guesses Remaining: ' + guessesLeft);

@@ -5,6 +5,10 @@ var Letter = function(alpha) {
         if (this.letterGuessed === true) {
             return this.letter;
         }
+        if (this.letter === '-') {
+            this.letterGuessed = true;
+            return this.letter;
+        }
         else {
             return '_';
         }
@@ -15,8 +19,5 @@ var Letter = function(alpha) {
         }
     }
 }; 
-
-// var testLetter = new Letter('s');
-// console.log(testLetter.displayLetter());
 
 module.exports = Letter;
