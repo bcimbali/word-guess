@@ -32,16 +32,18 @@ var askQuestion = function() {
             GameWord.displayWord();
             console.log('Guesses Remaining: ' + guessesLeft);
 
-            // if (GameWord.wordArray.indexOf('_') === -1) {
-            //     console.log('Nice Job!');
-            //     console.log('word array: ' + GameWord.wordArray);
-            // }
+            if (GameWord.word === GameWord.checkWin()) {
+                guessesLeft = -5;
+            }
 
             askQuestion();
         });
     }
-    else {
+    else if (guessesLeft === 0) {
         console.log('You Lose.\nPlay Again?');
+    }
+    else if (guessesLeft === -5) {
+        console.log('YOU WIN!\nNICE JOB!');
     }
 }
 

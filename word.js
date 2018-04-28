@@ -27,10 +27,13 @@ var Word = function(word) {
         }
     },
     this.checkWin = function() {
-		for (var i=0; i < this.wordArray.length; i++) {
-			if (this.wordArray[i] === '_') return false;
-		}
-		return true;
+		var tempArray = [];
+        // this.wordArray[1].checkLetter('r');
+        for (var i = 0; i < this.wordArray.length; i++) {
+            tempArray.push(this.wordArray[i].displayLetter());
+        }
+        var tempArrayString = tempArray.join('');
+        return tempArrayString;
 	}
 }
 
