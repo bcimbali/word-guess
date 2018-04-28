@@ -61,6 +61,15 @@ var chosenState = states[randomNumber];
 
 var GameWord = new Word(chosenState);
 
+function init() {
+    randomNumber = Math.floor((Math.random() * states.length));
+    chosenState = states[randomNumber];
+    GameWord = new Word(chosenState);
+    GameWord.addLetter();
+    GameWord.displayWord();
+    guessesLeft = 5;
+};
+
 GameWord.addLetter();
 
 var askQuestion = function() {
@@ -86,18 +95,17 @@ var askQuestion = function() {
             console.log('Guesses Remaining: ' + guessesLeft);
 
             if (GameWord.word === GameWord.checkWin()) {
-                guessesLeft = -5;
+                console.log('You Got it!\nNEXT WORD:\n');
+                init();
             }
 
             askQuestion();
         });
     }
     else if (guessesLeft === 0) {
-        console.log('You Lose.\nPlay Again?');
+        console.log('You Lose.\nThe correct word was:'+ GameWord.word + '\nPlay Again?');
     }
-    else if (guessesLeft === -5) {
-        console.log('YOU WIN!\nNICE JOB!');
-    }
+    
 }
 
 GameWord.displayWord();
