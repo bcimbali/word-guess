@@ -73,12 +73,23 @@ function init() {
 GameWord.addLetter();
 
 var askQuestion = function() {
+    
     if (guessesLeft > 0) {
 
         inquirer.prompt([
             {
                 name: 'guess',
-                message: 'Guess a letter'
+                message: 'Guess a letter',
+                validate: function(value) {
+                    var pass = value.match(
+                        /^[a-z]{1}$/
+                    );
+                    if (pass) {
+                        return true;
+                    }
+
+                    return 'Please enter only ONE letter';
+                }
             }
         ]).then(function(answers) {
             var sanitizeGuess = answers.guess.toLowerCase();
