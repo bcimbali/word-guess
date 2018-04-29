@@ -1,5 +1,7 @@
 var Word = require('./word');
 var inquirer = require("inquirer");
+const chalk = require('chalk');
+const chalkAnimation = require('chalk-animation');
 
 var guessesLeft = 5;
 
@@ -88,25 +90,26 @@ var askQuestion = function() {
                         return true;
                     }
 
-                    return 'Please enter only ONE letter';
+                    return chalk.red('Please enter only ' + chalk.bgYellowBright.underline.bold.black('ONE') + ' letter.');
                 }
             }
         ]).then(function(answers) {
             var sanitizeGuess = answers.guess.toLowerCase();
             if (GameWord.word.includes(sanitizeGuess)) {
-                console.log('CORRECT!!!!!');
+                console.log(chalk.green('CORRECT!!!!!'));
             }
             if (!GameWord.word.includes(sanitizeGuess)) {
-                console.log('INCORRECT!!!!');
+                console.log(chalk.red('INCORRECT!!!!'));
                 guessesLeft--;
             }
             
             GameWord.checkWord(sanitizeGuess);
             GameWord.displayWord();
-            console.log('Guesses Remaining: ' + guessesLeft);
+            console.log(chalk.magenta('Guesses Remaining: ' + chalk.yellow(guessesLeft)));
 
             if (GameWord.word === GameWord.checkWin()) {
-                console.log('You Got it!\nNEXT WORD:\n');
+                console.log(chalk.bgCyanBright.black('YOU GOT IT!!!!'));
+                console.log(chalk.underline('\nNEXT WORD:\n'));
                 init();
             }
 
@@ -120,6 +123,6 @@ var askQuestion = function() {
 }
 
 GameWord.displayWord();
-console.log('Guesses Remaining: ' + guessesLeft);
+console.log(chalk.magenta('Guesses Remaining: ' + chalk.yellow(guessesLeft)));
 askQuestion();
 

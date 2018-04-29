@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/bcimbali/word-guess#readme",
   "dependencies": {
-    "inquirer": "^5.2.0"
+    "chalk": "^2.4.1",
+    "chalk-animation": "^1.6.0",
+    "inquirer": "^5.2.0",
+    "npm": "^6.0.0"
   }
 }
